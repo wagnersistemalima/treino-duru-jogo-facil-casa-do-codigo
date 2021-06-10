@@ -1,0 +1,24 @@
+version: '3'
+services:
+    casa-do-codigo:
+        image: "casa-do-codigo:v1"
+        ports: 
+            - 80:8080
+        environment:
+            DB_URL: jdbc:postgresql://postgres:5432/bd_casacodigo
+            DB_USERNAME: postgres 
+            DB_PASSWORD: 1234567
+
+            
+    postgres:
+        image: "postgres:alpine"
+        volumes: 
+            - postgres-volume:/var/lib/postgresql/data
+        ports:
+            - 5434:5432
+        environment: 
+            POSTGRES_PASSWORD: 1234567
+            POSTGRES_USER: postgres
+            POSTGRES_DB: bd_casacodigo
+volumes:
+    postgres-volume:            
